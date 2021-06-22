@@ -7,7 +7,6 @@
                         id="accountName"
                         placeholder="Please enter account name" 
                         formControlName="accountName"
-                        [(ngModel)]="account.accountName"
                         [ngClass]="accountForm.get('accountName').invalid && 
                         (accountForm.get('accountName').dirty || accountForm.get('accountName').touched)?'is-invalid':''">
                 <label for="accountName">{{formLabel.ACCOUNT_NAME}}</label>
@@ -23,7 +22,6 @@
                         id="accountAddress"
                         placeholder="Please enter account address" 
                         formControlName="accountAddress" 
-                        [(ngModel)]="account.accountAddress" 
                         [ngClass]="accountForm.get('accountAddress').invalid && 
                         (accountForm.get('accountAddress').dirty || accountForm.get('accountAddress').touched)?'is-invalid':''"></textarea>
                 <label for="accountAddress">{{formLabel.ACCOUNT_ADDRESS}}</label>
@@ -39,7 +37,6 @@
                         id="panNumber"
                         placeholder="Please enter pan name" 
                         formControlName="panNumber" 
-                        [(ngModel)]="account.panNumber" 
                         [ngClass]="accountForm.get('panNumber').invalid && 
                         (accountForm.get('panNumber').dirty || accountForm.get('panNumber').touched)?'is-invalid':''">
                 <label for="panNumber">{{formLabel.PAN}}</label>
@@ -51,7 +48,6 @@
         <div class="col-md-12">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="chkGSTRegistration"
-                [(ngModel)]="account.isGSTRegistered"
                     formControlName="isGSTRegistered">
                 <label class="form-check-label" for="chkGSTRegistration">
                     {{formLabel.GST_REGISTERED}}
@@ -61,8 +57,7 @@
         <div class="col-md-12" *ngIf="accountForm.value.isGSTRegistered">
             <div class="form-floating">
                 <input type="text" class="form-control form-control-sm" id="accountGSTNumber"
-                    placeholder="Please enter GST Number" formControlName="gstNumber"
-                [(ngModel)]="account.gstNumber">
+                    placeholder="Please enter GST Number" formControlName="gstNumber">
                 <label for="accountGSTNumber">{{formLabel.GST_MUMBER}}</label>
             </div>
         </div>
@@ -73,7 +68,6 @@
                         id="bankAccountNumber"
                         placeholder="Please enter bank account number" 
                         formControlName="bankAccountNumber" 
-                        [(ngModel)]="account.bankAccountNumber"
                         [ngClass]="accountForm.get('bankAccountNumber').invalid && 
                         (accountForm.get('bankAccountNumber').dirty || accountForm.get('bankAccountNumber').touched)?'is-invalid':''">
                 <label for="bankAccountNumber">{{formLabel.BANK_ACCOUNT_NUMBER}}</label>
@@ -90,7 +84,6 @@
                             id="bankName"
                             placeholder="Please enter bank name" 
                             formControlName="bankName" 
-                            [(ngModel)]="account.bankName"
                             [ngClass]="accountForm.get('bankName').invalid && 
                             (accountForm.get('bankName').dirty || accountForm.get('bankName').touched)?'is-invalid':''">
                     <label for="bankName">{{formLabel.BANK_NAME}}</label>
@@ -104,7 +97,6 @@
                             id="bankBranch"
                             placeholder="Please enter bank branch" 
                             formControlName="bankBranch" 
-                            [(ngModel)]="account.bankBranch"
                             [ngClass]="accountForm.get('bankBranch').invalid && 
                             (accountForm.get('bankBranch').dirty || accountForm.get('bankBranch').touched)?'is-invalid':''">
                     <label for="bankBranch">{{formLabel.BANK_BRANCH}}</label>
@@ -122,7 +114,6 @@
                         id="ifscCode"
                         placeholder="Please enter IFSC Code" 
                         formControlName="ifscCode" 
-                        [(ngModel)]="account.ifscCode"
                         [ngClass]="accountForm.get('ifscCode').invalid && 
                         (accountForm.get('ifscCode').dirty || accountForm.get('ifscCode').touched)?'is-invalid':''">
                 <label for="accountName">{{formLabel.IFSC_CODE}}</label>

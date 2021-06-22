@@ -7,7 +7,7 @@ import {IClientFormModel} from './componentModel/clientFormModel';
   templateUrl: './client-entry.component.html',
   styleUrls: ['./client-entry.component.css']
 })
-export class ClientEntryComponent implements OnInit {
+export class ClientEntryComponent implements OnInit,OnChanges {
 
   clientForm:FormGroup;
   @Input('client') client:IClientFormModel;
@@ -27,16 +27,34 @@ export class ClientEntryComponent implements OnInit {
     this.clientForm.get("isGSTApplication").valueChanges.subscribe(value=>{
       if(value){
         this.clientForm.get("clientGSTNumber").setValidators(Validators.required);
+        this.client.isGSTApplication = true;
       }else{
         this.clientForm.get("clientGSTNumber").clearValidators();
         this.clientForm.get("clientGSTNumber").setValue(null);
-        this.client.clientGSTNumber = null;
       }
       this.clientForm.get("clientGSTNumber").updateValueAndValidity();
     });
   }
+  ngOnChanges(changes:SimpleChanges){
+    if(changes.client && changes.client.currentValue !== changes.client.previousValue){
+        this.applyInputValueChange(changes.client.currentValue);
+    }
+  }
+  applyInputValueChange(client:IClientFormModel){
+    this.clientForm.get("clientName").patchValue(client.clientName);
+    this.clientForm.get("clientAddress").patchValue(client.clientAddress);
+    this.clientForm.get("isGSTApplication").patchValue(client.isGSTApplication);
+    this.clientForm.get("clientGSTNumber").patchValue(client.clientGSTNumber);
+  }
   onSubmit():void{
-    this.onClientFormSubmit.emit(this.client);
+    let client:IClientFormModel =  {
+      clientName:this.clientForm.get("clientName").value,
+      clientAddress:this.clientForm.get("clientAddress").value,
+      isGSTApplication:this.clientForm.get("isGSTApplication").value,
+      clientGSTNumber:this.clientForm.get("clientGSTNumber").value,
+      id:this.client.id
+    }
+    this.onClientFormSubmit.emit(client);
     this.clientForm.reset();
   }
   

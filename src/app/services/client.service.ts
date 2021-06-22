@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { IClient } from '../Entities/client';
-import { StorageService } from './storage.service';
 import { findNextIdentity } from '../lib/Utility';
-import { isNgContent } from '@angular/compiler';
+import { IClientService } from './IClientService';
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class ClientService implements IClientService{
 
   clients: IClient[] = [];
   clientKey: string = "clients"

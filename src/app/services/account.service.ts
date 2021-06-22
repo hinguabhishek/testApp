@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { IAccount } from '../Entities/account';
 import { findNextIdentity } from '../lib/Utility';
-
+import { IAccountService } from './IAccountService';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class AccountService implements IAccountService{
   accounts: IAccount[] = [];
   accountKey: string = "accounts"
   constructor() {

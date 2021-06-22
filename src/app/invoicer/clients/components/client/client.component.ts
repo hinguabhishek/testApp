@@ -68,7 +68,7 @@ export class ClientComponent implements OnInit {
       clientAddress: client.clientAddress,
       isGSTApplication: client.gstNumber !== null && client.gstNumber.length > 0 ? true : false,
       clientGSTNumber: client.gstNumber,
-      id: this.client.id
+      id: client.id
     }
     return clientValue;
   }

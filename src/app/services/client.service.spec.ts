@@ -1,7 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ClientService } from './client.service';
-import { StorageService } from './storage.service';
 import { IClient } from '../Entities/client'
 var service: ClientService;
 describe('ClientService', () => {
